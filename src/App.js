@@ -1,24 +1,44 @@
-import logo from './logo.svg';
 import './App.css';
-
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+import Navbar from './components/Navbar';
+import Home from './components/Home';
+import About from './components/About';
+import Alert from './components/Alert';
+import NotesState from './context/notes/NotesState';
+import Login from './components/Login';
+import SignUp from './components/SignUp';
+import AlertState from './context/alert/AlertState';
+import contextValue from './context/alert/AlertContext';
+import { useContext } from 'react';
 function App() {
+  console.log(alert)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <>
+    <AlertState>
+    <NotesState>
+    <Router>
+      {/* Header Of our web app */}
+      <header>
+        <Navbar/>
+        <Alert />
+
       </header>
-    </div>
+
+      <Routes>
+        <Route exact path="/" element={<main><Home/></main>}></Route>
+        <Route exact path="/about" element={<main><About/></main>}></Route>
+        <Route exact path="/login" element={<main><Login /></main>}></Route>
+        <Route exact path="/signup" element={<main><SignUp/></main>}></Route>
+      </Routes>
+
+    </Router>
+    </NotesState>
+    </AlertState>
+    </>  
   );
 }
 
