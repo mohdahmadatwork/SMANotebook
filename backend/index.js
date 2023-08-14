@@ -15,4 +15,4 @@ app.use('/api/notes', require('./routes/notes'))
 
 
 app.listen(port, () => {
-  console.log(`SMANotebook backend listening at http://localhost:${port}`)})
+  console.log(`SMANotebook backend listening at https://smanotebook.onwebapp.io:${port}`)})
